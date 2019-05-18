@@ -1,0 +1,88 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+ul,ol{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+#box{
+	width: 700px;
+	height: 300px;
+	margin: 50px auto;
+	border: 1px solid;
+	position: relative;
+	overflow: hidden;
+}
+#box1{
+	position: absolute;
+	width: 700px;
+	height: 1500px;
+	transition: 1s;
+	left:0;
+	top: 0;
+}
+#box1 li{
+	width:700px;
+	height: 300px;
+	float: left;
+}
+#box1 li a{
+	display: block;
+	width:700px;
+	height: 300px;
+}
+#box1 li:nth-child(1) a{
+	background-color: red;
+}
+#box1 li:nth-child(2) a{
+	background-color: blue;
+}
+#box1 li:nth-child(3) a{
+	background-color: mediumpurple;
+}
+#box1 li:nth-child(4) a{
+	background-color: green;
+}
+#box1 li:nth-child(5) a{
+	background-color: yellow;
+}
+#box2{
+	position: absolute;
+	bottom: 40px;
+	right: 270px;
+	z-index: 6;
+}
+#box2 li{
+	width: 15px;
+	height: 15px;
+	border-radius: 100%;
+	background-color: #fff;
+	float: left;
+	margin-left:25px ;
+}
+#box2 .on{
+	background: black;
+	cursor: pointer;
+}
+#box>a{position: absolute;
+       top: 50%;
+	   margin-top: -10px;
+	   height: 40px;
+	   line-height: 32px;
+	   text-align: center;
+	   width: 40px;
+	   font-size: 40px;
+	   vertical-align: middle;
+	   color: #fff;
+	   background: rgba(0,0,0,0.5);
+	   z-index:6;
+}
+#goNext{
+	right: 0;
+}
+#goPrev{
+	left: 0;
+}

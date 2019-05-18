@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<body>
+		<div id="box">
+			<ul id="box1">	
+				<li><a href="javascript:alert(1);"></a></li>
+				<li><a href="javascript:alert(2);"></a></li>
+				<li><a href="javascript:alert(3);"></a></li>
+				<li><a href="javascript:alert(4);"></a></li>
+				<li><a href="javascript:alert(5);"></a></li>
+			</ul>	
+			<ol id="box2">
+<!-- 			<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li> -->
+			</ol>
+			<a href="javascript:;" id="goPrev">&laquo;</a>
+			<a href="javascript:;" id="goNext">&raquo;</a>
+		</div>
+		<script>
+			//找对象
+			var div =document.querySelector("#box"),
+			ul = div.querySelector("#box1"),
+			as = div.querySelector("#box1").children,
+			ol = div.querySelector("#box2"),
+			btns = [],//放按钮的空数组
+			goNext = div.querySelector("#goNext");
+			goPrev = div.querySelector("#goPrev");
+			
+			var index = 0;
+			// var lastIndex = 0; //记录上一次下标
+			var timer = null;
+			
+			//根据a的数量来创建按钮
+			for(let i = 0; i <as.length; i++){
+				var li = document.createElement("li");
+				// if(i === 0) li.className = "on";
+				ol.appendChild(li);
+				btns.push(li);
+			}
+			//按钮点击
+			for(let i = 0; i < btns.length; i++) {
+				btns[i].onclick = function () {
+					btns[index].classList.remove("on");
+					index = i;
+					btns[index].classList.add("on");
+					ul.style.top = -300*index + "px";
+					//console.log(ul.style.left);
+				}
+			}
+			//向右切换
+			goNext.onclick = function () {
+				btns[index].classList.remove("on");
+				index++;
+				if(index === as.length){
+					index = 0;
+				}
+				btns[index].classList.add("on");
+				ul.style.top = -300*index + "px";
+			}
+			//向左切换
+			goPrev.onclick = function () {
+				btns[index].classList.remove("on");
+				index--;
+				if(index < 0){
+					index = as.length-1;
+				}
+				btns[index].classList.add("on");
+				ul.style.top = -300*index + "px";
+			}
+			//自动切换
+			timer = setInterval(function() {
+				goNext.onclick();
+			},1500);
+			//鼠标进入停止
+			div.onmouseenter = function () {
+				clearInterval(timer);
+			}
+			//鼠标移出继续自动切换
+			div.onmouseleave = function () {
+				timer = setInterval(function() {
+					goNext.onclick();
+				},1500);
+			}
+			// function changeImg () {
+			// 	btns[lastIndex].classList.remove("on");
+			// 	as[lastIndex].classList.remove("on");
+			// 	ul.style.left = -700*index + "px";
+			// 	lastIndex = index;
+			// }
+		</script>
+	</body>
+</html>
